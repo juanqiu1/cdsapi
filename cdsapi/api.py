@@ -650,9 +650,9 @@ class Client(object):
 
                 tries += 1
                 self.warning(txt + f". Attempt {tries} of {self.retry_max}.")
-                if tries < self.retry_max:
-                    self.warning(f"Retrying in {self.sleep_max} seconds")
-                    time.sleep(self.sleep_max)
+                if tries < self.retry_max * 10:
+                    self.warning(f"Retrying in 10 seconds")
+                    time.sleep(10)
                     self.info("Retrying now...")
                 else:
                     raise Exception("Could not connect")
